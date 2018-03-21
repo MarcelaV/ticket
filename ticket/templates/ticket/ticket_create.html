@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block section %}
+{% if request.user.is_superuser %}
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-primary" type="submit">Enviar</button>
+</form>
+{% else %}
+<h2>No tiene los permisos para crear un ticket</h2>
+<h4>Contacte a su administrador</h4>
+<br>
+<br>
+<br>
+<br>
+<a href="{% url 'ticket:ticket_list' %}">
+    <button class="btn btn-primary" type="submit">Volver</button>
+</a>
+{% endif %}
+<br>
+<br>
+<br>
+<br>
+<br>
+{% endblock %}

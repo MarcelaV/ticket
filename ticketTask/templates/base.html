@@ -1,0 +1,157 @@
+{% load staticfiles %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %} Título {% endblock %}</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fonts.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Acme|Crete+Round|Lato" rel="stylesheet">
+    <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+    <link rel="stylesheet" href="{% static 'css/estilos.css' %}">
+
+
+
+    <style>
+        .header{
+            background: #5F70C7;
+            padding-top: 0px;
+
+        }
+
+        .header li a{
+            color: white;
+            font-family: "Lato",sans-serif,sans-serif;
+        }
+
+        .header li a:hover{
+            color: black;
+        }
+
+        .footer{
+        top: 150px;
+        }
+
+    </style>
+
+</head>
+<body class="body-img">
+{% block navbar %}
+<div class="container-fluid">
+    <div class="superior">
+        <div class="row">
+            <div class="col-md-12 navbar-header">
+                <a href="/"><img src="https://upload.wikimedia.org/wikipedia/commons/3/30/Vector-based_example.svg" alt="" class="logo-header"></a>
+                <h3 class="texto-logo">Titulo</h3>
+                <div class="twitter">
+                    <a href="https://twitter.com" target="_blank"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="/admin" target="_blank">Admin</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <header class="row">
+        <div class="header col-md-12">
+            <ul class="nav nav-tabs nav-justified">
+                <li><a href="/">Home</a></li>
+                {% if user.is_authenticated %}
+                <li><a href="{% url 'ticket:ticket_list' %}">Listado de tickets</a></li>
+                <li><a href="{% url 'ticket:ticket_create' %}">Crear ticket</a></li>
+                <li><a href="{% url 'logout' %}">Salir</a></li>
+                {% else %}
+                <li><a href="{% url 'usuario:registrar_usuario' %}">Registrarse</a></li>
+                <li><a href="{% url 'login' %}">Entrar</a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </header>
+</div>
+{% endblock %}
+<hr>
+
+<div class="container">
+    <div class="row">
+        <section class="section col-md-12">
+            {% block section %} {% endblock %}
+        </section>
+        <hr>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+<br>
+
+{% block footer %}
+    <footer id="myFooter">
+        <div class="container container-fluid">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Inscríbete</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Inscripción</a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Nosotros</h5>
+                    <ul>
+                        <li><a href="#">Información de la compañía</a></li>
+                        <li><a href="#">Contáctanos</a></li>
+                        <li><a href="#"></a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Suporte</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Preguntas frecuentes</a></li>
+                        <li><a href="#">Foros</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3 info">
+                    <h5>Información</h5>
+                    <p> Lorem ipsum dolor amet, consectetur adipiscing elit. Etiam consectetur aliquet aliquet. Interdum et malesuada fames ac ante ipsum primis in faucibus. </p>
+                </div>
+            </div>
+        </div>
+        <div class="second-bar">
+           <div class="container">
+                <h2 class="logo-footer"><a href="#">Ticket</a></h2>
+                <div class="social-icons">
+                    <a href="#" class="twitter-footer"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="facebook-footer"><i class="fab fa-facebook"></i></a>
+                    <a href="#" class="google-footer"><i class="fab fa-google-plus"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+
+
+
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slides.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+    <script>
+        $(function(){
+      $(".slides").slidesjs({
+        height: 450,
+        play: {
+          interval: 2500,
+          auto: true,
+        }
+      });
+    });
+    </script>
+
+
+</body>
+</html>

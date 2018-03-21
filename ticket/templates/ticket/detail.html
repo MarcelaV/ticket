@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+
+{% block section %}
+<div class="container-fluid">
+<h2>Detalle de ticket</h2>
+<br>
+
+    <strong>ID:</strong> {{ ticket.pk }}
+    <br>
+
+    <strong>Nombre:</strong> {{ ticket.ticket_title }}
+    <br>
+    <strong>Descripción</strong> {{ ticket.ticket_description }}
+    <br>
+    <strong>Status</strong> {{ ticket.ticket_status }}
+    <br>
+    <strong>Fecha de creación</strong> {{ ticket.ticket_created_at }}
+    <br>
+    <br>
+    <br>
+    <a href="../lista">
+        <button class="btn btn-primary">Atrás</button>
+    </a>
+</div>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+    {% block title %} Listado {% endblock %}
+
+{% block section %}
+    <h1>Listado de tickets</h1>
+<p>Listado de los 7 ticket más recientes</p>
+<br>
+    <ul>
+        {% for ticket in ticket_list %}
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <a href="detail/{{ ticket.pk }}"><li>{{ ticket.ticket_title }}</li></a>
+                </div>
+                <div class="col-md-2">
+                    <strong>{{ ticket.ticket_status }}</strong>
+                </div>
+                <div class="col-md-3">
+                    <strong>Creado:</strong>{{ ticket.ticket_created_at }}
+                </div>
+            </div>
+        </div>
+
+            {% endfor %}
+    </ul>
+<br>
+<br>
+<br>
+{% endblock %}
